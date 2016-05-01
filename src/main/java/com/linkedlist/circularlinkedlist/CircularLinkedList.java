@@ -1,33 +1,33 @@
-package com.linkedlist.singlylinkedlist;
+package com.linkedlist.circularlinkedlist;
 
-public class SinglyLinkedList {
+public class CircularLinkedList {
 
-	private SLLNode head = null;
-	private SLLNode tail = null;
+	private CLLNode head;
+	private CLLNode tail;
 
 	// insert a new node before the head, beginning of list
 	public void addFirst(int data) {
 		if (head == null) {
-			head = new SLLNode(data);
+			head = new CLLNode(data);
 			tail = head;
+			tail.setNext(head);
 		} else {
-			SLLNode newNode = new SLLNode(data);
+			CLLNode newNode = new CLLNode(data);
 			newNode.setNext(head);
 			head = newNode;
+			tail.setNext(head);
 		}
 	}
 
 	// insert a new node after the tail, end of list
 	public void addLast(int data) {
 		if (head == null) {
-			head = new SLLNode(data);
-			head.setNext(null);
-			tail = head;
+			addFirst(data);
 		} else {
-			SLLNode newNode = new SLLNode(data);
+			CLLNode newNode = new CLLNode(data);
 			tail.setNext(newNode);
-			newNode.setNext(null);
 			tail = newNode;
+			tail.setNext(head);
 		}
 	}
 
@@ -47,14 +47,14 @@ public class SinglyLinkedList {
 			} else {
 				// add to middle
 				// create a temp node and traverse to the position - 1 node
-				SLLNode temp = head;
+				CLLNode currentNode = head;
 				for (int i = 1; i < position - 1; i++) {
-					temp = temp.getNext();
+					currentNode = currentNode.getNext();
 				}
-				SLLNode tempNextNode = temp.getNext();
-				SLLNode newNode = new SLLNode(data);
-				temp.setNext(newNode);
-				newNode.setNext(tempNextNode);
+				CLLNode currentNextNode = currentNode.getNext();
+				CLLNode newNode = new CLLNode(data);
+				currentNode.setNext(newNode);
+				newNode.setNext(currentNextNode);
 			}
 		}
 	}
@@ -63,26 +63,35 @@ public class SinglyLinkedList {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
 		} else {
-			SLLNode temp = head.getNext();
-			head = temp;
+			if (size() == 1) {
+				head = null;
+				tail = null;
+			} else {
+				CLLNode nextToHead = head.getNext();
+				tail.setNext(nextToHead);
+				head = nextToHead;
+			}
 		}
 	}
 
 	public void deleteLast() {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
-		} else if (head == tail) {
-			head = null;
 		} else {
-			SLLNode temp = head;
-			SLLNode tailLessOne = null;
-			while (temp.getNext() != null) {
-				tailLessOne = temp;
-				temp = temp.getNext();
+			if (size() == 1) {
+				head = null;
+				tail = null;
+			} else {
+				CLLNode currentNode = head;
+				// this pointer is used to find previous node of tail
+				CLLNode temp = null;
+				while (currentNode.getNext() != head) {
+					temp = currentNode;
+					currentNode = currentNode.getNext();
+				}
+				temp.setNext(head);
+				tail = temp;
 			}
-			tail = tailLessOne;
-			tail.setNext(null);
-
 		}
 	}
 
@@ -97,41 +106,48 @@ public class SinglyLinkedList {
 			} else {
 				// delete by position
 				// create a temp node and traverse to the position - 1 node
-				SLLNode temp = head;
+				CLLNode temp = head;
 				for (int i = 1; i < position - 1; i++) {
 					temp = temp.getNext();
 				}
-				SLLNode tempNextNext = temp.getNext().getNext();
+				CLLNode tempNextNext = temp.getNext().getNext();
 				temp.setNext(tempNextNext);
 			}
 		}
 	}
 
 	public String toString() {
-		SLLNode temp = head;
+		CLLNode currentNode = head;
 		StringBuilder builder = new StringBuilder();
-		while (temp != null) {
-			builder.append(temp.getData() + " ");
-			temp = temp.getNext();
+		while (currentNode != null) {
+			builder.append(currentNode.getData() + " ");
+			currentNode = currentNode.getNext();
+			if (currentNode == head) {
+				break;
+			}
 		}
 		return builder.toString();
 	}
 
 	public int size() {
-		SLLNode temp = head;
+		CLLNode currentNode = head;
 		int count = 0;
-		while (temp != null) {
+		while (currentNode != null) {
 			count++;
-			temp = temp.getNext();
+			currentNode = currentNode.getNext();
+			if (currentNode == head) {
+				break;
+			}
 		}
 		return count;
 	}
 
-	public SLLNode getHead() {
+	public CLLNode getHead() {
 		return head;
 	}
 
-	public SLLNode getTail() {
+	public CLLNode getTail() {
 		return tail;
 	}
+
 }

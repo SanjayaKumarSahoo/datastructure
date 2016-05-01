@@ -12,46 +12,44 @@ public class SinglyLinkedListTest {
 
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
-	
-	
+
 	@Test
-	public void testAddFirst (){
+	public void testAddFirst() {
 		SinglyLinkedList linkedList = new SinglyLinkedList();
 		linkedList.addFirst(10);
 		linkedList.addFirst(9);
 		linkedList.addFirst(8);
-		linkedList.addFirst(7);		
+		linkedList.addFirst(7);
 		assertEquals("7 8 9 10 ", linkedList.toString());
 		assertEquals(linkedList.getHead().getData(), 7);
 		assertEquals(linkedList.getTail().getData(), 10);
 	}
 
-	
 	@Test
-	public void testAddLast(){
+	public void testAddLast() {
 		SinglyLinkedList linkedList = new SinglyLinkedList();
 		linkedList.addLast(8);
 		linkedList.addLast(9);
-		linkedList.addLast(10);		
+		linkedList.addLast(10);
 		assertEquals("8 9 10 ", linkedList.toString());
 		assertEquals(linkedList.getHead().getData(), 8);
 		assertEquals(linkedList.getTail().getData(), 10);
 	}
-	
+
 	@Test
-	public void testAddToListByAnyLocation(){
+	public void testAddToListByAnyLocation() {
 		SinglyLinkedList linkedList = new SinglyLinkedList();
 		linkedList.add(1, 101);
 		linkedList.add(2, 102);
 		linkedList.add(3, 103);
 		linkedList.add(4, 104);
 		linkedList.add(3, 100000);
-		linkedList.add(2, 100001);		
+		linkedList.add(2, 100001);
 		assertEquals("101 100001 102 100000 103 104 ", linkedList.toString());
 		assertEquals(linkedList.getHead().getData(), 101);
 		assertEquals(linkedList.getTail().getData(), 104);
 	}
-	
+
 	@Test
 	public void testDeleteFirst() {
 		SinglyLinkedList list = new SinglyLinkedList();
@@ -134,6 +132,42 @@ public class SinglyLinkedListTest {
 
 		assertEquals(list1.getHead().getData(), 10);
 		assertEquals(list1.getTail().getData(), 60);
+	}
+
+	@Test
+	public void testAddAtIndexOne() {
+		SinglyLinkedList list = new SinglyLinkedList();
+		list.addFirst(10);
+		assertEquals("10 ", list.toString());
+		
+		list.addLast(20);
+		assertEquals("10 20 ", list.toString());
+		
+		list.add(1, 30);
+		assertEquals("30 10 20 ", list.toString());
+		
+		list.add(4, 40);
+		assertEquals("30 10 20 40 ", list.toString());				
+		
+		assertEquals(list.getHead().getNext().getNext().getData(), 20);
+		assertEquals(list.getTail().getNext(), null);
+	}
+	
+	@Test
+	public void testDeleteFirstLastWhenOneNode(){
+		SinglyLinkedList list = new SinglyLinkedList();
+		list.addFirst(10);
+		
+		list.deleteFirst();
+		assertEquals("", list.toString());
+		assertEquals(0, list.size());
+		
+		SinglyLinkedList list1 = new SinglyLinkedList();
+		list1.addFirst(10);
+		list1.deleteLast();
+		assertEquals("", list1.toString());
+		assertEquals(0, list1.size());
+		
 	}
 
 }

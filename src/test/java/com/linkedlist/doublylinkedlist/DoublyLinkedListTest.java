@@ -152,4 +152,42 @@ public class DoublyLinkedListTest {
 
 	}
 
+	@Test
+	public void testAddAtIndexOne() {
+		DoublyLinkedList list = new DoublyLinkedList();
+		list.addFirst(10);
+		assertEquals("10 ", list.toString());
+
+		list.addLast(20);
+		assertEquals("10 20 ", list.toString());
+
+		list.add(1, 30);
+		assertEquals("30 10 20 ", list.toString());
+
+		list.add(4, 40);
+		assertEquals("30 10 20 40 ", list.toString());
+
+		assertEquals(list.getHead().getNext().getNext().getData(), 20);
+		assertEquals(list.getTail().getNext(), null);
+
+		assertEquals(list.getHead().getNext().getPrevious().getData(), 30);
+		assertEquals(list.getTail().getPrevious().getPrevious().getData(), 10);
+	}
+	
+	@Test
+	public void testDeleteFirstLastWhenOneNode(){
+		DoublyLinkedList list = new DoublyLinkedList();
+		list.addFirst(10);
+		
+		list.deleteFirst();
+		assertEquals("", list.toString());
+		assertEquals(0, list.size());
+		
+		DoublyLinkedList list1 = new DoublyLinkedList();
+		list1.addFirst(10);
+		list1.deleteLast();
+		assertEquals("", list1.toString());
+		assertEquals(0, list1.size());	
+	}
+
 }

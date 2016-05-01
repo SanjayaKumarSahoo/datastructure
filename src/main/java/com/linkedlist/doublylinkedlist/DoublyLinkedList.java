@@ -38,7 +38,9 @@ public class DoublyLinkedList {
 		if (position <= 0 || position - size() > 1) {
 			throw new RuntimeException("Invalid position");
 		} else {
-			if (position - size() == 1) {
+			if (position == 1) {
+				addFirst(data);
+			} else if (position - size() == 1) {
 				// if position 1 and size 0, add to last
 				// if position 2 and size 1, add to last
 				// if position 3 and size 2, add to last
@@ -66,12 +68,14 @@ public class DoublyLinkedList {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
 		} else {
-			DLLNode nextToHead = head.getNext();
-			// for last node nextToHead could be null
-			if (nextToHead != null) {
+			if (size() == 1) {
+				head = null;
+				tail = null;
+			} else {
+				DLLNode nextToHead = head.getNext();
 				nextToHead.setPrevious(null);
+				head = nextToHead;
 			}
-			head = nextToHead;
 		}
 	}
 
@@ -79,9 +83,14 @@ public class DoublyLinkedList {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
 		} else {
-			DLLNode previousToTail = tail.getPrevious();
-			previousToTail.setNext(null);
-			tail = previousToTail;
+			if (size() == 1) {
+				head = null;
+				tail = null;
+			} else {
+				DLLNode previousToTail = tail.getPrevious();
+				previousToTail.setNext(null);
+				tail = previousToTail;
+			}
 		}
 	}
 
