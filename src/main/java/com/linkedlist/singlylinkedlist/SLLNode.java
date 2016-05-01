@@ -1,22 +1,22 @@
 package com.linkedlist.singlylinkedlist;
 
-public class Node {
+public class SLLNode {
 
 	private final int data;
-	private Node next;
+	private SLLNode next;
 
-	public Node(int data) {
+	public SLLNode(int data) {
 		this.data = data;
 	}
 
 	public int getData() {
 		return data;
 	}
-	public Node getNext() {
+	public SLLNode getNext() {
 		return next;
 	}
 
-	public void setNext(Node next) {
+	public void setNext(SLLNode next) {
 		this.next = next;
 	}
 }

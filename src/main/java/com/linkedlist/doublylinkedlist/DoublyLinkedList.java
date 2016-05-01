@@ -1,18 +1,22 @@
-package com.linkedlist.singlylinkedlist;
+package com.linkedlist.doublylinkedlist;
 
-public class SinglyLinkedList {
+public class DoublyLinkedList {
 
-	private SLLNode head = null;
-	private SLLNode tail = null;
+	private DLLNode head;
+	private DLLNode tail;
 
 	// insert a new node before the head, beginning of list
 	public void addFirst(int data) {
 		if (head == null) {
-			head = new SLLNode(data);
+			head = new DLLNode(data);
+			head.setNext(null);
+			head.setPrevious(null);
 			tail = head;
 		} else {
-			SLLNode newNode = new SLLNode(data);
+			DLLNode newNode = new DLLNode(data);
 			newNode.setNext(head);
+			head.setPrevious(newNode);
+			newNode.setPrevious(null);
 			head = newNode;
 		}
 	}
@@ -20,13 +24,11 @@ public class SinglyLinkedList {
 	// insert a new node after the tail, end of list
 	public void addLast(int data) {
 		if (head == null) {
-			head = new SLLNode(data);
-			head.setNext(null);
-			tail = head;
+			addFirst(data);
 		} else {
-			SLLNode newNode = new SLLNode(data);
+			DLLNode newNode = new DLLNode(data);
 			tail.setNext(newNode);
-			newNode.setNext(null);
+			newNode.setPrevious(tail);
 			tail = newNode;
 		}
 	}
@@ -45,42 +47,41 @@ public class SinglyLinkedList {
 			} else {
 				// add to middle
 				// create a temp node and traverse to the position - 1 node
-				SLLNode temp = head;
+				DLLNode temp = head;
 				for (int i = 1; i < position - 1; i++) {
 					temp = temp.getNext();
 				}
-				SLLNode tempNextNode = temp.getNext();
-				SLLNode newNode = new SLLNode(data);
+				DLLNode tempNextNode = temp.getNext();
+				DLLNode newNode = new DLLNode(data);
+				newNode.setPrevious(temp);
 				temp.setNext(newNode);
 				newNode.setNext(tempNextNode);
+				tempNextNode.setPrevious(newNode);
 			}
 		}
+
 	}
 
 	public void deleteFirst() {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
 		} else {
-			SLLNode temp = head.getNext();
-			head = temp;
+			DLLNode nextToHead = head.getNext();
+			// for last node nextToHead could be null
+			if (nextToHead != null) {
+				nextToHead.setPrevious(null);
+			}
+			head = nextToHead;
 		}
 	}
 
 	public void deleteLast() {
-		if (head == null) { 
+		if (head == null) {
 			throw new RuntimeException("List is empty");
-		} else if (head == tail) {
-			head = null;
 		} else {
-			SLLNode temp = head;
-			SLLNode tailLessOne = null;
-			while (temp.getNext() != null) {
-				tailLessOne = temp;
-				temp = temp.getNext();
-			}
-			tail = tailLessOne;
-			tail.setNext(null);
-
+			DLLNode previousToTail = tail.getPrevious();
+			previousToTail.setNext(null);
+			tail = previousToTail;
 		}
 	}
 
@@ -95,18 +96,19 @@ public class SinglyLinkedList {
 			} else {
 				// delete by position
 				// create a temp node and traverse to the position - 1 node
-				SLLNode temp = head;
+				DLLNode temp = head;
 				for (int i = 1; i < position - 1; i++) {
 					temp = temp.getNext();
 				}
-				SLLNode tempNextNext = temp.getNext().getNext();
+				DLLNode tempNextNext = temp.getNext().getNext();
 				temp.setNext(tempNextNext);
+				tempNextNext.setPrevious(temp);
 			}
 		}
 	}
 
 	public String toString() {
-		SLLNode temp = head;
+		DLLNode temp = head;
 		StringBuilder builder = new StringBuilder();
 		while (temp != null) {
 			builder.append(temp.getData() + " ");
@@ -116,7 +118,7 @@ public class SinglyLinkedList {
 	}
 
 	public int size() {
-		SLLNode temp = head;
+		DLLNode temp = head;
 		int count = 0;
 		while (temp != null) {
 			count++;
@@ -124,12 +126,13 @@ public class SinglyLinkedList {
 		}
 		return count;
 	}
-	
-	public SLLNode getHead() {
+
+	public DLLNode getHead() {
 		return head;
 	}
-	
-	public SLLNode getTail() {
+
+	public DLLNode getTail() {
 		return tail;
 	}
+
 }
