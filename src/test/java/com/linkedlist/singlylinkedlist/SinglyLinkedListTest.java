@@ -84,13 +84,15 @@ public class SinglyLinkedListTest {
 		list.addLast(4);
 		assertEquals("3 2 1 4 ", list.toString());
 
-		list.deleteLast();
+		int data = list.deleteLast();
+		assertEquals(4, data);
 		assertEquals("3 2 1 ", list.toString());
 
 		list.deleteLast();
 		assertEquals("3 2 ", list.toString());
 
-		list.deleteLast();
+		data = list.deleteLast();
+		assertEquals(2, data);
 		assertEquals("3 ", list.toString());
 
 		list.deleteLast();
