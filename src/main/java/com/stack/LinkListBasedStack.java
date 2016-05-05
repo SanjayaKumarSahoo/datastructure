@@ -19,7 +19,7 @@ public class LinkListBasedStack {
 	}
 
 	public boolean isEmpty() {
-		return list.getHead() == list.getTail();
+		return list.getHead() == null;
 	}
 
 	public int size() {

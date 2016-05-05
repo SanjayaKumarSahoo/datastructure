@@ -26,7 +26,7 @@ public class LinkListBasedStackTest {
 
 	@Test
 	public void testPop() {
-		DynaArrayStack stack = new DynaArrayStack(2);
+		LinkListBasedStack stack = new LinkListBasedStack();
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
@@ -34,14 +34,14 @@ public class LinkListBasedStackTest {
 		stack.push(5);
 		assertEquals("1 2 3 4 5 ", stack.toString());
 
-		assertEquals(5, stack.pop().intValue());
-		assertEquals(4, stack.pop().intValue());
+		assertEquals(5, stack.pop());
+		assertEquals(4, stack.pop());
 		assertEquals("1 2 3 ", stack.toString());
 	}
 
 	@Test
 	public void testSize() {
-		DynaArrayStack stack = new DynaArrayStack(2);
+		LinkListBasedStack stack = new LinkListBasedStack();
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
@@ -60,7 +60,7 @@ public class LinkListBasedStackTest {
 
 	@Test
 	public void testStackIsEmpty() {
-		DynaArrayStack stack = new DynaArrayStack(1);
+		LinkListBasedStack stack = new LinkListBasedStack();
 		assertTrue(stack.isEmpty());
 		stack.push(1);
 		assertFalse(stack.isEmpty());
@@ -77,7 +77,7 @@ public class LinkListBasedStackTest {
 
 	@Test
 	public void testStackUnderFlow() {
-		DynaArrayStack stack = new DynaArrayStack(2);
+		LinkListBasedStack stack = new LinkListBasedStack();
 		stack.push(1);
 		stack.push(2);
 		stack.pop();
