@@ -65,16 +65,7 @@ public class LinkListBasedStackTest {
 		stack.push(1);
 		assertFalse(stack.isEmpty());
 	}
-
-	@Test
-	public void testStackIsFull() {
-		DynaArrayStack stack = new DynaArrayStack(1);
-		stack.push(1);
-		assertTrue(stack.isStackFull());
-		stack.pop();
-		assertTrue(stack.isEmpty());
-	}
-
+	
 	@Test
 	public void testStackUnderFlow() {
 		LinkListBasedStack stack = new LinkListBasedStack();
