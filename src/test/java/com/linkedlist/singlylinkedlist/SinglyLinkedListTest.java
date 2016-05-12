@@ -141,35 +141,36 @@ public class SinglyLinkedListTest {
 		SinglyLinkedList list = new SinglyLinkedList();
 		list.addFirst(10);
 		assertEquals("10 ", list.toString());
-		
+
 		list.addLast(20);
 		assertEquals("10 20 ", list.toString());
-		
+
 		list.add(1, 30);
 		assertEquals("30 10 20 ", list.toString());
-		
+
 		list.add(4, 40);
-		assertEquals("30 10 20 40 ", list.toString());				
-		
+		assertEquals("30 10 20 40 ", list.toString());
+
 		assertEquals(list.getHead().getNext().getNext().getData(), 20);
 		assertEquals(list.getTail().getNext(), null);
 	}
-	
+
 	@Test
-	public void testDeleteFirstLastWhenOneNode(){
+	public void testDeleteFirstLastWhenOneNode() {
 		SinglyLinkedList list = new SinglyLinkedList();
 		list.addFirst(10);
-		
-		list.deleteFirst();
+
+		int data = list.deleteFirst();
+		assertEquals(10, data);
 		assertEquals("", list.toString());
 		assertEquals(0, list.size());
-		
+
 		SinglyLinkedList list1 = new SinglyLinkedList();
 		list1.addFirst(10);
 		list1.deleteLast();
 		assertEquals("", list1.toString());
 		assertEquals(0, list1.size());
-		
+
 	}
 
 }

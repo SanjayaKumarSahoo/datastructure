@@ -59,12 +59,14 @@ public class SinglyLinkedList {
 		}
 	}
 
-	public void deleteFirst() {
+	public Integer deleteFirst() {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
 		} else {
+			Integer daletedData = head != null ? head.getData() : null;
 			SLLNode temp = head.getNext();
 			head = temp;
+			return daletedData;
 		}
 	}
 
@@ -72,7 +74,7 @@ public class SinglyLinkedList {
 		if (head == null) {
 			throw new RuntimeException("List is empty");
 		} else if (head == tail) {
-			int deletedNodeData = head.getData(); 
+			int deletedNodeData = head.getData();
 			head = null;
 			return deletedNodeData;
 		} else {
