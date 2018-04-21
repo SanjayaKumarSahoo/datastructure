@@ -1,5 +1,6 @@
 package com.tree;
 
+import com.queue.LinkedListBasedQueue;
 import com.stack.LinkListBasedStack;
 
 public class TreeTraversal {
@@ -58,5 +59,30 @@ public class TreeTraversal {
 
     //  Left, Right, Root
     public void postOrder(Node root) {
+    }
+
+
+    public String levelOrderTraversal(Node root) {
+        Node temp = root;
+        if (temp == null) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        LinkedListBasedQueue<Node> queue = new LinkedListBasedQueue<>();
+        queue.enQueue(temp);
+
+        while (!queue.isEmpty()) {
+            Node node = queue.deQueue();
+            builder.append(node.data);
+
+            if (node.left != null) {
+                queue.enQueue(node.left);
+            }
+
+            if (node.right != null) {
+                queue.enQueue(node.right);
+            }
+        }
+        return builder.toString();
     }
 }
