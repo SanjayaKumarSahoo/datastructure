@@ -12,7 +12,7 @@ public class LinkedListBasedQueueTest {
 
 	@Test
 	public void testEnqueue() {
-		LinkedListBasedQueue queue = new LinkedListBasedQueue();
+		LinkedListBasedQueue<Integer> queue = new LinkedListBasedQueue<>();
 		queue.enQueue(100);
 		Assert.assertEquals(1, queue.getSize());
 		Assert.assertEquals(100, queue.deQueue().intValue());

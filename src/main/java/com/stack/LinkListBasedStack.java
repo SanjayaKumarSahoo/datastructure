@@ -2,32 +2,32 @@ package com.stack;
 
 import com.linkedlist.singlylinkedlist.SinglyLinkedList;
 
-public class LinkListBasedStack {
+public class LinkListBasedStack<T> {
 
-	private final SinglyLinkedList list;
+    private final SinglyLinkedList<T> list;
 
-	public LinkListBasedStack() {
-		list = new SinglyLinkedList();
-	}
+    public LinkListBasedStack() {
+        list = new SinglyLinkedList();
+    }
 
-	public void push(int data) {
-		list.addLast(data);
-	}
+    public void push(T data) {
+        list.addLast(data);
+    }
 
-	public int pop() {
-		return list.deleteLast();
-	}
+    public T pop() {
+        return list.deleteLast();
+    }
 
-	public boolean isEmpty() {
-		return list.getHead() == null;
-	}
+    public boolean isEmpty() {
+        return list.getHead() == null;
+    }
 
-	public int size() {
-		return list.size();
-	}
+    public int size() {
+        return list.size();
+    }
 
-	@Override
-	public String toString() {
-		return list.toString();
-	}
+    @Override
+    public String toString() {
+        return list.toString();
+    }
 }
