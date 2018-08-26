@@ -18,7 +18,6 @@ public class GreaterElementArray {
                 stack.push(input[i]);
                 continue;
             }
-
             while (stack.empty() == false && stack.peek() < input[i]) {
                 System.out.println(stack.peek() + " -> " + input[i]);
                 stack.pop();
@@ -27,7 +26,7 @@ public class GreaterElementArray {
         }
 
         while (stack.empty() == false) {
-            System.out.println(stack.peek() + " -> " + -1);
+            System.out.println(stack.peek() + " -> X");
             stack.pop();
         }
     }

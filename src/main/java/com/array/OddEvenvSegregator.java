@@ -33,7 +33,7 @@ public class OddEvenvSegregator {
     }
 
     public static void main(String[] args) {
-        int[] data = {1, 2, 3, 4, 5, 6, 9};
-        Arrays.stream(oddEven(data)).forEach(System.out::print);
+        int[] data = {1, 2, 3, 4, 5, 6, 9,-1,-2};
+        Arrays.stream(oddEven(data)).forEach(System.out::println);
     }
 }
