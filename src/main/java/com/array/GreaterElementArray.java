@@ -5,7 +5,7 @@ import java.util.Stack;
 public class GreaterElementArray {
 
     public static void printNextGreaterElement(Integer[] input) {
-        if (input.length == 0) {
+        if (input == null || input.length == 0) {
             throw new IllegalArgumentException("Input is empty");
         }
 
@@ -18,10 +18,12 @@ public class GreaterElementArray {
                 stack.push(input[i]);
                 continue;
             }
+
             while (stack.empty() == false && stack.peek() < input[i]) {
                 System.out.println(stack.peek() + " -> " + input[i]);
                 stack.pop();
             }
+
             stack.push(input[i]);
         }
 
