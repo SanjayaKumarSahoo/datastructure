@@ -16,7 +16,6 @@ public class RemoveKthLast {
         three.next = four;
         four.next = five;
 
-
         SLLNode data = removeKthLast(one, 2);
         while (data != null) {
             System.out.println(data.data);
@@ -25,7 +24,6 @@ public class RemoveKthLast {
     }
 
     private static SLLNode removeKthLasWithSizeCalculation(SLLNode node, int k) {
-
         if (node == null) {
             throw new IllegalArgumentException("Node is empty");
         }
@@ -53,7 +51,7 @@ public class RemoveKthLast {
         return node;
     }
 
-    // without size calculation
+    // without size calculation (with help of two pointer)
     private static SLLNode removeKthLast(SLLNode node, int k) {
 
         if (node == null) {
@@ -61,7 +59,7 @@ public class RemoveKthLast {
         }
 
         SLLNode first = node;
-        while (k+1 > 0) {
+        while (k + 1 > 0) {
             first = first.next;
             k = k - 1;
         }
@@ -77,6 +75,4 @@ public class RemoveKthLast {
         }
         return node;
     }
-
-
 }
