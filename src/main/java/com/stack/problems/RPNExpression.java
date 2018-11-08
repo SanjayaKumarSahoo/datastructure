@@ -40,7 +40,6 @@ public class RPNExpression {
                         break;
                     default:
                         throw new IllegalArgumentException("Invalid token");
-
                 }
             } else {
                 // its a digit

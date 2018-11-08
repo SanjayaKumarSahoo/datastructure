@@ -33,7 +33,6 @@ public class StackReverse {
             stack.pop();
             insertAtLast(stack, element);
             stack.push(data);
-
         }
     }
 }
