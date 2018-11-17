@@ -9,8 +9,8 @@ public class RemoveDuplicateSortedList {
         SLLNode<Integer> one = new SLLNode<Integer>(1);
         SLLNode<Integer> two = new SLLNode<Integer>(1);
         SLLNode<Integer> three = new SLLNode<Integer>(2);
-        SLLNode<Integer> four = new SLLNode<Integer>(1);
-        SLLNode<Integer> five = new SLLNode<Integer>(1);
+        SLLNode<Integer> four = new SLLNode<Integer>(3);
+        SLLNode<Integer> five = new SLLNode<Integer>(4);
         one.next = two;
         two.next = three;
         three.next = four;

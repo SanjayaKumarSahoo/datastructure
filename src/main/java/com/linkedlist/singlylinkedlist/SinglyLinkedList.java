@@ -143,11 +143,14 @@ public class SinglyLinkedList<T> {
 
     public static class SLLNode<T> {
 
-        public final T data;
+        public T data;
         public SLLNode<T> next;
 
         public SLLNode(T data) {
             this.data = data;
+        }
+
+        public SLLNode() {
         }
 
         public T getData() {
