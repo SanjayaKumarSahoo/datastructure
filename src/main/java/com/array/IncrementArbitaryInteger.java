@@ -4,7 +4,7 @@ public class IncrementArbitaryInteger {
 
     public static void main(String[] args) {
         int[] input = {1, 2, 8};
-        int[] result = increment(input, 12);
+        int[] result = increment(input, 9);
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
         }

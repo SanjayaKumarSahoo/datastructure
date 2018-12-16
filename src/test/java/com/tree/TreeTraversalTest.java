@@ -1,5 +1,6 @@
 package com.tree;
 
+import com.tree.problems.traversal.TreeTraversal;
 import org.junit.Assert;
 import org.junit.Test;
 

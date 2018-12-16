@@ -1,7 +1,8 @@
-package com.tree;
+package com.tree.problems.traversal;
 
 import com.queue.LinkedListBasedQueue;
 import com.stack.LinkListBasedStack;
+import com.tree.Node;
 
 public class TreeTraversal {
 
