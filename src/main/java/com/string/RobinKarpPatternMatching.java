@@ -66,7 +66,7 @@ public class RobinKarpPatternMatching {
     /**
      * Total ASCII - 127
      * ASCII  - (A - Z) =  (65 - 90)
-     * ASCII  - (a - 5) =  (97 - 122)
+     * ASCII  - (a - z) =  (97 - 122)
      * ASCII  - (0 - 9) =  (91 - 100)
      * hash function for ABC = 65*127^2+66*127^1+67*127^0
      */
