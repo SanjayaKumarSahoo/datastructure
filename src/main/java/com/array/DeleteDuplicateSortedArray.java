@@ -11,12 +11,14 @@ public class DeleteDuplicateSortedArray {
 
     private static int removeDuplicates(int arr[]) {
         int j = 0;
-        for (int i = 0; i < arr.length - 1; i++)
-            if (arr[i] != arr[i + 1])
-                arr[j++] = arr[i];
-
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] != arr[i + 1]) {
+                arr[j] = arr[i];
+                j = j + 1;
+            }
+        }
         arr[j++] = arr[arr.length - 1];
-
         return j;
     }
+    //2 3 5 7 11 13
 }

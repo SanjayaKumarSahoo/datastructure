@@ -22,16 +22,16 @@ public class ReverseAList {
     }
 
     private static SLLNode<Integer> reverse(SLLNode<Integer> node) {
-        SLLNode<Integer> previous = null;
-        SLLNode<Integer> next;
-        SLLNode<Integer> current = node;
-        while (current != null) {
-            next = current.next;
-            current.next = previous;
-            previous = current;
-            current = next;
+        SLLNode<Integer> prev = null;
+        SLLNode<Integer> next = null;
+        SLLNode<Integer> temp = node;
+        while (temp != null) {
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
         }
-        node = previous;
+        node = prev;
         return node;
     }
 }

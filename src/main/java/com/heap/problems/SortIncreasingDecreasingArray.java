@@ -20,7 +20,7 @@ public class SortIncreasingDecreasingArray {
         if (input == null || input.length == 0) {
             throw new IllegalArgumentException("Invalid input");
         }
-        return MergeKSortedArray.mergeKSortedArray(findSortedArrays(input));
+        return null;/*MergeKSortedArray.mergeKSortedArray(findSortedArrays(input));*/
     }
 
 

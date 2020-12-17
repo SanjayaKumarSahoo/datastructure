@@ -5,7 +5,9 @@ public class SinglyLinkedList<T> {
     private SLLNode<T> head = null;
     private SLLNode<T> tail = null;
 
-    // insert a new node before the head, beginning of list
+    // insert a new node before the hea
+    //
+    // d, beginning of list
     public void addFirst(T data) {
         if (head == null) {
             head = new SLLNode(data);

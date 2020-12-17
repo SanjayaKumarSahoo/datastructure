@@ -10,7 +10,7 @@ public class FindPairSum {
 
     public static void main(String[] args) {
         int[] input = {1, 2, 4, 5, 3, 1, 0};
-        System.out.println(pairSum(input, 2));
+        System.out.println(pairSum(input, 5));
     }
 
     private static List<List<Integer>> pairSum(int[] A, int sum) {
@@ -19,7 +19,8 @@ public class FindPairSum {
         for (int i = 0; i < A.length; i++) {
             int diff = sum - A[i];
             if (set.contains(diff)) {
-                result.add(Arrays.asList(A[i], diff));
+                //result.add(Arrays.asList(A[i], diff));
+                System.out.println("(" + A[i] + " , " + diff + ")");
             }
             set.add(A[i]);
         }

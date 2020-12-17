@@ -22,7 +22,7 @@ public class FindTripletSum {
         int[] result = new int[3];
         for (int i = 0; i < A.length; i++) {
             int currentSum = sum - A[i];
-            Set<Integer> set = new HashSet();
+            Set<Integer> set = new HashSet<>();
             for (int j = i + 1; j < A.length; j++) {
                 if (set.contains(currentSum - A[j])) {
                     result[0] = A[i];

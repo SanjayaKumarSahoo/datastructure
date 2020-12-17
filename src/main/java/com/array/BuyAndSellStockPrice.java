@@ -3,7 +3,7 @@ package com.array;
 public class BuyAndSellStockPrice {
 
     public static void main(String[] args) {
-        double[] stockPrices = {310, 315, 275, 295, 260, 270, 290, 230, 255, 250, 400};
+        double[] stockPrices = {310, 315, 275, 295, 260, 270, 290, 230};
         double maxProfit = findMaxProfit(stockPrices);
         System.out.println(maxProfit);
     }

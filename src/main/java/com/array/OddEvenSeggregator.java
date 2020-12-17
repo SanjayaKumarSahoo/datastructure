@@ -2,11 +2,11 @@ package com.array;
 
 import java.util.Arrays;
 
-public class OddEvenvSegregator {
+public class OddEvenSeggregator {
 
     public static int[] oddEven(int[] input) {
         if (input == null || input.length == 0) {
-            throw new IllegalArgumentException("'Input data iss empty");
+            throw new IllegalArgumentException("'Input data is empty");
         }
 
         int odd = 0;
