@@ -2,24 +2,25 @@ package com.tree.bst;
 
 import com.tree.Node;
 
-public class SearchElementBST {
+public class IsBST {
 
     public static void main(String[] args) {
         Node<Integer> root = prepareBST();
-        Node<Integer> element = findElement(root, 23);
-        if (element != null) {
-            System.out.println(element.data);
-        }
+        boolean isBST = isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        System.out.println("Is BST : " + isBST);
     }
 
 
-    private static Node<Integer> findElement(Node<Integer> root, Integer value) {
-        if (root == null || root.data.equals(value)) {
-            return root;
+    private static boolean isBST(Node<Integer> root, Integer lower, Integer upper) {
+        if (root == null) {
+            return true;
+        } else if (Integer.compare(root.data, lower) < 0
+                || Integer.compare(root.data, upper) > 0) {
+            return
+                    false;
         }
-        return value < root.data
-                ? findElement(root.left, value)
-                : findElement(root.right, value);
+        return isBST(root.left, lower, root.data)
+                && isBST(root.right, root.data, upper);
     }
 
     private static Node<Integer> prepareBST() {
@@ -89,5 +90,4 @@ public class SearchElementBST {
         O.right = P;
         return A;
     }
-
 }
