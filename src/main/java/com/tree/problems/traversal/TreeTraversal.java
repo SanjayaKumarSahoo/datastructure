@@ -4,6 +4,8 @@ import com.queue.LinkedListBasedQueue;
 import com.stack.LinkListBasedStack;
 import com.tree.Node;
 
+import java.util.Stack;
+
 public class TreeTraversal {
 
 
@@ -59,9 +61,28 @@ public class TreeTraversal {
 
 
     //  Left, Right, Root
-    public void postOrder(Node root) {
-    }
+    public void postOrder(Node<Integer> root) {
+        if (root == null) {
+            throw new RuntimeException("Empty root");
+        }
+        Stack<Node<Integer>> stack = new Stack<>();
+        stack.push(root);
 
+        Stack<Integer> out = new Stack<>();
+        while (!stack.empty()) {
+            Node<Integer> curr = stack.pop();
+            out.push(curr.data);
+            if (curr.left != null) {
+                stack.push(curr.left);
+            }
+            if (curr.right != null) {
+                stack.push(curr.right);
+            }
+        }
+        while (!out.empty()) {
+            System.out.println(out.pop());
+        }
+    }
 
     public String levelOrderTraversal(Node root) {
         Node temp = root;
