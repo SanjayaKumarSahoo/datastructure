@@ -19,7 +19,7 @@ public class MaxAPIQueue {
         if (list.size() == 0) {
             return Integer.MIN_VALUE;
         } else {
-            return list.getFirst().max;
+            return list.getLast().max;
         }
     }
 
@@ -41,6 +41,9 @@ public class MaxAPIQueue {
         queue.enQueue(3);
         queue.enQueue(4);
         queue.enQueue(5);
+        queue.enQueue(-5);
+
+        System.out.println(queue.max());
 
 
     }

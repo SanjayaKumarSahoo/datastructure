@@ -14,13 +14,17 @@ public class IsBST {
     private static boolean isBST(Node<Integer> root, Integer lower, Integer upper) {
         if (root == null) {
             return true;
-        } else if (Integer.compare(root.data, lower) < 0
-                || Integer.compare(root.data, upper) > 0) {
-            return
-                    false;
+        } else if (root.data < lower || root.data > upper) {
+            return false;
         }
         return isBST(root.left, lower, root.data)
                 && isBST(root.right, root.data, upper);
+    }
+
+    // use fact that if in-order traversal of tree is sorted
+    private static boolean isBSTThroughRecursion() {
+        // TODO implement me
+        return false;
     }
 
     private static Node<Integer> prepareBST() {
