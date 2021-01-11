@@ -9,24 +9,24 @@ public class OddEvenSeggregator {
             throw new IllegalArgumentException("'Input data is empty");
         }
 
-        int odd = 0;
-        int even = input.length - 1;
+        int start = 0;
+        int end = input.length - 1;
 
-        while (odd <= even) {
+        while (start <= end) {
 
-            if (input[odd] % 2 == 0 && input[even] % 2 != 0) {
+            if (input[start] % 2 == 0 && input[end] % 2 != 0) {
                 // swap odd/even
-                int temp = input[odd];
-                input[odd] = input[even];
-                input[even] = temp;
+                int temp = input[start];
+                input[start] = input[end];
+                input[end] = temp;
             }
 
-            if (input[odd] % 2 != 0) {
-                odd++;
+            if (input[start] % 2 != 0) {
+                start++;
             }
 
-            if (input[even] % 2 == 0) {
-                even--;
+            if (input[end] % 2 == 0) {
+                end--;
             }
         }
         return input;
